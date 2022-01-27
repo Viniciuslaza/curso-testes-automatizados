@@ -1,10 +1,10 @@
-import React from 'react';
-import SignInSide from './principalView/SignInSide';
+import React from "react";
+import Form from "./principalView/Form";
 
 function App() {
   return (
     <div className="App">
-      <SignInSide/>
+      <Form />
     </div>
   );
 }
