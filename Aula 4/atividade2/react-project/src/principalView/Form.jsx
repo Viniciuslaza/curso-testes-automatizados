@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from 'react-router-dom';
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -7,20 +8,12 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from 'react';
+import { useState } from "react";
 
 const theme = createTheme();
 
 export default function Form() {
-
-  const [skillData, setSkillData] = useState({
-    "skillName": "",
-    "developers": [],
-    "profile": {
-      "technologies": [],
-      "roles": []
-    }
-  });
+  let navigate = useNavigate();
   const [skillsData, setSkillsData] = useState([{
     "skillName": "",
     "developers": [],
@@ -30,37 +23,22 @@ export default function Form() {
     }
   }]);
 
-  const [showSkill, setShowSkill] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      skill: data.get("skill"),
-      developers: data.get("developers"),
-      technologies: data.get("technologies"),
-      roles: data.get("roles")
-    });
+    navigate('/list')
+    loadSkills();
   };
 
-  function loadSkill() {
-    setShowSkill(true);
-    setShowSkills(false);
-    fetch('https://61e4d942595afe00176e51cb.mockapi.io/api/v1/skill')
-        .then(response => response.json())
-      .then(data => {
-        setSkillData(data[0]);
-        });
-  }
   function loadSkills() {
-    setShowSkill(false);
     setShowSkills(true);
-    fetch('https://61e4d942595afe00176e51cb.mockapi.io/api/v1/skills')
-        .then(response => response.json())
-      .then(data => {
+    fetch("https://61e4d942595afe00176e51cb.mockapi.io/api/v1/skills")
+      .then((response) => response.json())
+      .then((data) => {
         setSkillsData(data);
-        });
+      });
+    console.log(skillsData);
   }
 
   return (
@@ -124,7 +102,7 @@ export default function Form() {
               <TextField
                 margin="normal"
                 required
-                style={{ display: "flex" }}
+                fullWidth
                 id="roles"
                 label="Roles"
                 name="roles"
@@ -139,7 +117,7 @@ export default function Form() {
                   marginLeft: "150px",
                   marginTop: "50px",
                   textTransform: "capitalize",
-                  backgroundColor: "black"
+                  backgroundColor: "black",
                 }}
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
