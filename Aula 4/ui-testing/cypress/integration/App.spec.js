@@ -1,19 +1,28 @@
+import appSkillActions from "../components/appSkill-actions";
+import appSkillList from "../features/appSkillList-feature/appSkill-feature";
+
 describe('App Developers Skills', () => {
 
-    beforeEach(() => {
+    before(() => {
         cy.visit('http://localhost:3000/');
+        
     });
 
-    it('should load skills list as the button is clicked', () => {
-        cy.get('#load-skills-button').click();
-        cy.get('li').should('be.visible');
-        cy.get('ul').should('be.visible');
-    });
-    it('should load one skill after input and click search button', () => {
-        cy.get('input').type('front-end');
-        cy.get('#search-button').click();
-        cy.get('li').should('be.visible');
-        cy.contains('Skill Name: front-end');
+    it('You must fill the form with your skill', () => {
+        appSkillActions.writeSkillName("Rogerinho");
+        appSkillActions.writeSkillDevelopers("Automatizador");
+        appSkillActions.writeSkillTecnologic("Cypress");
+        appSkillActions.writeSkillRoles("QA");
+        appSkillActions.clickButtonAddSkill();
+
     });
 
+    it('check list skill', () => {
+        appSkillList.checkTitle("front-end");
+        appSkillList.checkSkillName("Skill Name: front-end");
+        appSkillList.checkDevelopers("dev name 1");
+        appSkillList.checkDevelopers("dev name 2");
+        appSkillList.checkTechnologies("React");
+        appSkillList.checkTechnologies("Angular");
+    });
 });
