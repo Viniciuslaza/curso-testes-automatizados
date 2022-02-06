@@ -28,14 +28,6 @@ jobs:
       
       - working-directory: ./Aula 4/atividade2/ui-testing
         run: npm install
-      - working-directory: ./Aula 4/atividade2/ui-testing
-        run: npm run test
-      - working-directory: ./Aula 4/atividade2/ui-testing
-        run: npm run build
-      - working-directory: ./Aula 4/atividade2/ui-testing
-        run: npm install
-      - working-directory: ./Aula 4/atividade2/ui-testing
-        run: npm run test
       - working-directory: ./Aula 4/atividade2/react-project
         run: npm install
       - working-directory: ./Aula 4/atividade2/react-project
