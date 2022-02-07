@@ -26,12 +26,16 @@ jobs:
           node-version: 16.x
           cache: npm
       
-      - working-directory: ./Aula 4/atividade2/ui-testing
+      - working-directory: ./Aula 4/ui-testing
         run: npm install
-      - working-directory: ./Aula 4/atividade2/react-project
+      - working-directory: ./Aula 4/ui-testing
+        run: npm run test
+      - working-directory: ./Aula 4/ui-testing
+        run: npm run build
+      - working-directory: ./
         run: npm install
-      - working-directory: ./Aula 4/atividade2/react-project
-        run: npm start
+      - working-directory: ./
+        run: npm run test
   cypress-run:
     runs-on: ubuntu-latest
     steps:
