@@ -9,9 +9,13 @@
 // ***********************************************
 //
 //
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
+Cypress.Commands.add('includeSkill', (skillName, skillNameDev, skillNameTech, skillNameRoles) => { 
+  cy.get('#skill').type(skillName);;
+  cy.get('#developers').type(skillNameDev);;
+  cy.get('#technologies').type(skillNameTech);;
+  cy.get('#roles').type(skillNameRoles);
+  cy.get('.MuiButton-root').click();
+})
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

@@ -9,12 +9,7 @@ describe('App Developers Skills', () => {
     });
 
     it('You must fill the form with your skill', () => {
-        appSkillActions.writeSkillName("Rogerinho");
-        appSkillActions.writeSkillDevelopers("Automatizador");
-        appSkillActions.writeSkillTecnologic("Cypress");
-        appSkillActions.writeSkillRoles("QA");
-        appSkillActions.clickButtonAddSkill();
-
+        cy.includeSkill("Rogerinho", "Automatizador", "Cypress", "QA");
     });
 
     it('check list skill', () => {
